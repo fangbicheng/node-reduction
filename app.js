@@ -3,8 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const csurf = require('csurf');
 const helmet = require('helmet');
 const rateLimit = require("express-rate-limit");
+const index = require('./routes/index');
 const reductionRouter = require('./routes/reduction');
 const mongoose = require('mongoose');
 
@@ -40,6 +42,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(csurf({ cookie: true }));
 // 安全帽
 app.use(helmet());
 // 限流
@@ -50,6 +53,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // 路由
+app.use('/', index);
 app.use('/api/reduction', reductionRouter);
 
 // catch 404 and forward to error handler

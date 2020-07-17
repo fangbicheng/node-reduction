@@ -106,5 +106,21 @@ npm run build
 npm run stop 
 
 # 在PM2中重启服务
-npm run restart 
+npm run restart
 ```
+
+## TODO
+1.XSS防御（Done）
+2.CSRF防御（Done）
+3.SSL安全加密
+4.api参数校验
+5.SQL注入防御
+6.密码等隐私数据加密：crypto
+7.登录鉴权
+8.日志管理工具：log4js
+9.异常错误处理，数据埋点上报
+10.代码压缩：compression
+11.代码规范检查ESLint
+12.单元测试
+13.开发环境代码变更自动重启（Done）
+14.分离Model和Router，单独处理数据库操作（Done）
